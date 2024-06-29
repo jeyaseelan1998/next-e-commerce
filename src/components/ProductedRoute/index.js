@@ -1,13 +1,12 @@
 "use client";
 
+import { redirect } from "next/navigation";
 import { getCookie } from "@/helpers/cookies";
-import { redirect } from "next/dist/server/api-utils";
 
 const productedRoute = (WrappedComponent) => {
   const ProductedRoute = (props) => {
     if (!getCookie("auth_login")) {
       redirect("/auth")
-      return <></>;
     }
 
     return <WrappedComponent {...props} />;
