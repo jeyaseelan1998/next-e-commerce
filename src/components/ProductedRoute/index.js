@@ -5,7 +5,9 @@ import { getCookie } from "@/helpers/cookies";
 const productedRoute = (WrappedComponent) => {
   const ProductedRoute = (props) => {
     if (!getCookie("auth_login")) {
-      window.location.replace("/auth");
+      if(window) {
+        window.location.replace("/auth");
+      }
       return <></>;
     }
 
