@@ -1,0 +1,41 @@
+.section {
+    min-height: 100vh;
+    padding: 15px 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &.auth {
+        background-image: url("https://res.cloudinary.com/dj5c1rxzz/image/upload/v1719633217/login_background_kre4qb.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .content {
+        padding: 0 105px;
+        flex: 1;
+        position: relative;
+
+        @media (max-width: 1330px) {
+            padding: 0 95px;
+        }
+        @media (max-width: 1200px) {
+            padding: 0 85px;
+        }
+        @media (max-width: 1024px) {
+            padding: 0 75px;
+        }
+        @media (max-width: 960px) {
+            padding: 0 65px;
+        }
+        @media (max-width: 820px) {
+            padding: 0 45px;
+        }
+        @media (max-width: 550px) {
+            padding: 0 35px;
+        }
+        @media (max-width: 420px) {
+            padding: 0 25px;
+        }
+    }
+}
