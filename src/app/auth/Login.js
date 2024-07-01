@@ -27,7 +27,10 @@ const Login = ({ className, toggler }) => {
       password,
     });
 
-    if (!response) return;
+    if (!response) {
+      setFetching(() => false);
+      return;
+    }
 
     if (response?.status === 200) {
       showToast("Login success", toastTypes.success);
