@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
 
@@ -14,11 +13,10 @@ import { getCookie } from "@/helpers/cookies";
 import style from "./style.module.scss";
 
 const Auth = () => {
-  const router = useRouter();
   const [isNewLogin, setIsNewLogin] = useState(false);
 
-  if(getCookie("auth_login")) {
-    router.replace("/")
+  if (getCookie("auth_login")) {
+    window.location.replace("/");
   }
 
   const toggleIsNewLogin = () => setIsNewLogin((prev) => !prev);

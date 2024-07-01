@@ -1,35 +1,42 @@
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 
-import Field from "@/components/Field";
+import Field from "../../components/Field";
 
-import { showToast, toastTypes } from "@/helpers/toast";
+import { showToast, toastTypes } from "../../helpers/toast";
+import { setCookie } from "../../helpers/cookies";
+import { submitUserLoginDetails } from "../../api/authentication";
 
 import style from "./style.module.scss";
-import { submitLoginDetails } from "@/api/authentication";
 
 const Login = ({ className, toggler }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [fetching, setFetching] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password.length < 6) {
       showToast("Minimum 6 chars required", toastTypes.error);
       return;
-    } else if (password.length > 12) {
-      showToast("12 letters is enough", toastTypes.error);
-      return;
     }
 
-    const response = await submitLoginDetails({email: "test@test.com", password: "testing1234"});
-    console.log(response);
+    setFetching(() => true);
+    const response = await submitUserLoginDetails({
+      username,
+      password,
+    });
 
-    if (response?.statusText === "OK") {
+    if (!response) return;
+
+    if (response?.status === 200) {
       showToast("Login success", toastTypes.success);
+      setCookie("auth_login", response.data.jwt_token);
+      window.location.href = "/";
     } else {
-      showToast("Login failed, Try again", toastTypes.error); //! update with error message
+      showToast("Login failed, Try again", toastTypes.error);
     }
+    setFetching(() => false);
   };
 
   return (
@@ -55,10 +62,14 @@ const Login = ({ className, toggler }) => {
           type="password"
           placeholder="Enter password"
           required
+          maxLength={10}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className={style.submitBtn}>Login</button>
+        <button className={style.submitBtn} disabled={fetching}>
+          {!fetching && "Login"}
+          {fetching && "Fetching"}
+        </button>
         <p className={style.question}>
           Don&#39;t you have an account?{" "}
           <button onClick={toggler} type="button">

@@ -33,8 +33,13 @@
     outline: none;
     border-radius: 4px;
     font: 500 16px/1.25 "Roboto", "Sans-serif";
+    background-color: #6c757d;
+    
+    &:disabled {
+      color: #fff;
+    }
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #06fd;
     }
   }
