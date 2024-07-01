@@ -33,7 +33,10 @@ const Register = ({ className, toggler }) => {
       password,
     });
 
-    if (!response) return;
+    if (!response) {
+      setApiStatus(() => apiStatuses.initial);
+      return;
+    }
 
     if (response?.status === 200) {
       showToast("Login success", toastTypes.success);
@@ -65,7 +68,10 @@ const Register = ({ className, toggler }) => {
       mobile,
     });
 
-    if (!response) return;
+    if (!response) {
+      setApiStatus(() => apiStatuses.initial);
+      return;
+    }
 
     if (response?.status === 200) {
       showToast("Registeration success", toastTypes.success);
