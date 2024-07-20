@@ -9,6 +9,11 @@
         background-image: url("https://res.cloudinary.com/dj5c1rxzz/image/upload/v1719633217/login_background_kre4qb.jpg");
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: 50% 50%;
+        
+        @media (max-height: 750px) {
+            min-height: 750px;
+        }
     }
 
     .content {

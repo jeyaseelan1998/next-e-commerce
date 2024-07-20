@@ -7,8 +7,10 @@ import {
   submitUserRegisterationDetails,
 } from "../../api/authentication";
 
-import style from "./style.module.scss";
+import Button from "@/components/Button";
+
 import { setCookie } from "@/helpers/cookies";
+import style from "./style.module.scss";
 
 const apiStatuses = {
   initial: "initial",
@@ -147,15 +149,15 @@ const Register = ({ className, toggler }) => {
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
-      <button className={style.submitBtn} disabled={apiStatus !== "initial"}>
+      <Button type="submit" bgColor="primary" disabled={apiStatus !== "initial"}>
         {apiStatus === "initial" && "Register"}
         {apiStatus !== "initial" && apiStatus}
-      </button>
+      </Button>
       <p className={style.question}>
         Already have an account?{" "}
-        <button onClick={toggler} type="button">
+        <Button callback={toggler} type="button" bgColor="transparent">
           Click here
-        </button>
+        </Button>
       </p>
     </form>
   );
