@@ -6,7 +6,7 @@ import { getCookie } from "@/helpers/cookies";
 const productedRoute = (WrappedComponent) => {
   const ProductedRoute = (props) => {
     if (!getCookie("auth_login")) {
-      redirect("/auth")
+      redirect("/auth");
     }
 
     return <WrappedComponent {...props} />;

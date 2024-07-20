@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
 
 import style from "./style.module.scss";
-import { useState } from "react";
 
 const Field = ({ label, type = "text", name, value, onChange, id, ...rest }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,8 +24,8 @@ const Field = ({ label, type = "text", name, value, onChange, id, ...rest }) => 
           />
         )}
         {type === "password" && <button type="button" onClick={() => setIsVisible(prev => !prev)}>
-          {!isVisible && <FaRegEye className={style.icon} />}
-          {isVisible && <FaRegEyeSlash  className={style.icon} />}
+          {isVisible && <FaRegEye className={style.icon} />}
+          {!isVisible && <FaRegEyeSlash  className={style.icon} />}
         </button>}
       </div>
     </div>

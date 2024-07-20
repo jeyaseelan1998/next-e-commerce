@@ -1,7 +1,7 @@
-import { showToast, toastTypes } from "@/helpers/toast";
 import axios from "axios";
+import { showToast, toastTypes } from "@/helpers/toast";
 
-const baseUrl = "https://e-commerce-backend-spqg.onrender.com";
+const baseUrl = process.env.NEXT_PUBLIC_APP_API;
 
 export const submitUserLoginDetails = async (userDetails) => {
   try {

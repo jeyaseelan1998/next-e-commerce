@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 
 import Field from "../../components/Field";
+import Button from "@/components/Button";
 
 import { showToast, toastTypes } from "../../helpers/toast";
 import { setCookie } from "../../helpers/cookies";
@@ -69,15 +70,15 @@ const Login = ({ className, toggler }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className={style.submitBtn} disabled={fetching}>
+        <Button type="submit" bgColor="primary" disabled={fetching}>
           {!fetching && "Login"}
           {fetching && "Fetching"}
-        </button>
+        </Button>
         <p className={style.question}>
           Don&#39;t you have an account?{" "}
-          <button onClick={toggler} type="button">
+          <Button callback={toggler} type="button" bgColor="transparent">
             Click here
-          </button>
+          </Button>
         </p>
       </form>
 

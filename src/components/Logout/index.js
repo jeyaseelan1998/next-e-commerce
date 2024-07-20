@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { getCookie, removeCookie } from "@/helpers/cookies";
+import Button from "../Button";
 
-import style from "./style.module.scss";
+import { getCookie, removeCookie } from "@/helpers/cookies";
 
 const Logout = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -23,8 +22,8 @@ const Logout = () => {
 
   return (
     <>
-      {!isLoggedin && <Link href={"/auth"}>Login / Register</Link>}
-      {isLoggedin && <button className={style.logout} onClick={onLogout}>Logout</button>}
+      {!isLoggedin && <Button href={"/auth"}>Login / Register</Button>}
+      {isLoggedin && <Button bgColor="danger" callback={onLogout}>Logout</Button>}
     </>
   );
 };
